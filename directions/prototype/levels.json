@@ -1,0 +1,109 @@
+{
+  "levels": [
+    {
+      "id": "pp-prototype-poisoning",
+      "name": "极简原型投毒",
+      "path": "directions/prototype/pp-prototype-poisoning/index.php",
+      "category": "prototype",
+      "difficulty": "低"
+    },
+    {
+      "id": "pp-csv-pollution",
+      "name": "CSV 原型链污染",
+      "path": "directions/prototype/pp-csv-pollution/",
+      "category": "Prototype Pollution",
+      "difficulty": "中"
+    },
+    {
+      "id": "pp-attr-xss",
+      "name": "属性注入 XSS",
+      "path": "directions/prototype/pp-attr-xss/index.html",
+      "category": "原型污染→属性注入",
+      "difficulty": "中-高"
+    },
+    {
+      "id": "pp-admin-bypass",
+      "name": "管理员鉴权绕过",
+      "path": "directions/prototype/pp-admin-bypass/index.html",
+      "category": "原型污染→任意属性注入",
+      "difficulty": "中-高"
+    },
+    {
+      "id": "pp-dos-attack",
+      "name": "拒绝服务攻击",
+      "path": "directions/prototype/pp-dos-attack/index.html",
+      "category": "原型污染→拒绝服务",
+      "difficulty": "中-高"
+    },
+    {
+      "id": "pp-sql-injection",
+      "name": "SQL 注入攻击（原型污染）",
+      "path": "directions/prototype/pp-sql-injection/index.php",
+      "category": "原型污染→SQL注入",
+      "difficulty": "中-高"
+    },
+    {
+      "id": "pp-rce-pollution",
+      "name": "远程命令执行 · 原型链污染",
+      "path": "directions/prototype/pp-rce-pollution/index.php",
+      "category": "原型链污染",
+      "difficulty": "高"
+    },
+    {
+      "id": "pp-isolate-hijack",
+      "name": "同隔离进程劫持",
+      "path": "directions/prototype/pp-isolate-hijack/index.html",
+      "category": "原型污染→引用劫持 / 控制流翻转",
+      "difficulty": "高"
+    },
+    {
+      "id": "pp-remote-attack",
+      "name": "远程原型污染攻击",
+      "path": "directions/prototype/pp-remote-attack/index.html",
+      "category": "原型污染→远程劫持",
+      "difficulty": "高"
+    },
+    {
+      "id": "pp-rce-attack",
+      "name": "任意代码执行（原型污染）",
+      "path": "directions/prototype/pp-rce-attack/index.php",
+      "category": "原型污染→任意代码执行",
+      "difficulty": "高"
+    },
+    {
+      "id": "pp-electron-msg-attack",
+      "name": "Electron 消息原型污染",
+      "path": "directions/prototype/pp-electron-msg-attack/index.php",
+      "category": "原型污染→Electron IPC 劫持",
+      "difficulty": "高"
+    },
+    {
+      "id": "pp-type-confusion",
+      "name": "类型混淆（原型污染）",
+      "path": "directions/prototype/pp-type-confusion/index.php",
+      "category": "原型污染→类型混淆",
+      "difficulty": "高"
+    },
+    {
+      "id": "pp-prefix-bypass",
+      "name": "前缀绕过原型污染",
+      "path": "directions/prototype/pp-prefix-bypass/index.php",
+      "category": "原型污染→前缀绕过",
+      "difficulty": "高"
+    },
+    {
+      "id": "pp-ini-pollution",
+      "name": "INI 解析原型污染",
+      "path": "directions/prototype/pp-ini-pollution/index.php",
+      "category": "原型污染→INI解析",
+      "difficulty": "高"
+    },
+    {
+      "id": "pp-yaml-pollution",
+      "name": "YAML 解析原型污染",
+      "path": "directions/prototype/pp-yaml-pollution/index.html",
+      "category": "原型污染→YAML解析",
+      "difficulty": "高"
+    }
+  ]
+}

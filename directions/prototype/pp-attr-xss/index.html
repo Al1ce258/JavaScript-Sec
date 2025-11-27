@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>资料卡 · 个性化配置</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../assets/css/style.css" />
+  </head>
+  <body>
+    <div id="app" class="app-shell">
+      <main class="container">
+        <section class="hero">
+          <h1 class="glow">资料卡</h1>
+          <p class="tagline">个性化配置与展示</p>
+        </section>
+
+        <section class="panel" id="editor">
+          <div style="display:flex; gap:12px; align-items:center; justify-content:space-between;">
+            <div style="flex:1; display:flex; gap:10px; align-items:center;">
+              <input id="nickname" class="textarea" style="min-height:0; height:40px;" placeholder="昵称" />
+              <button id="applyNickname" class="btn">更新资料卡</button>
+            </div>
+            <a class="btn" href="../../../index.html">返回首页</a>
+          </div>
+
+          <textarea id="cfgInput" class="textarea" placeholder='请输入内容'></textarea>
+          <div style="margin-top: 10px; display:flex; gap:10px;">
+            <button id="applyCfg" class="btn">导入配置</button>
+            <button id="reset" class="btn" style="background: linear-gradient(90deg, #ffa4f5, #ff00e1);">重置</button>
+          </div>
+        </section>
+
+        <section class="panel" style="margin-top:16px;">
+          <div id="card" class="card">
+            <div class="content">
+              <h3 id="cardTitle">未设置昵称</h3>
+              <div id="cardInfo" class="meta">个性化颜色与行为由配置决定</div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="../../../assets/js/ui.js"></script>
+    <script type="module" src="./app.js"></script>
+  </body>
+  </html>

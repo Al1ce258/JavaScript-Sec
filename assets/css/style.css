@@ -1,0 +1,141 @@
+:root {
+  --bg: #0a0f1e;
+  --panel: #10162a;
+  --text: #e6f1ff;
+  --muted: #95a3b3;
+  --accent: #00f0ff;
+  --accent-2: #ff00e1;
+  --success: #4cff89;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: radial-gradient(1200px 800px at 80% 10%, rgba(0,240,255,.15), transparent 60%),
+              radial-gradient(900px 700px at 20% 80%, rgba(255,0,225,.10), transparent 60%),
+              var(--bg);
+  background-attachment: fixed;
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+.app-shell { position: relative; min-height: 100vh; }
+.nav {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between;
+  backdrop-filter: blur(8px);
+  background: linear-gradient(180deg, rgba(16,22,42,.85), rgba(16,22,42,.55));
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  padding: 14px 22px;
+}
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand .logo { width: 28px; height: 28px; border-radius: 6px;
+  background: conic-gradient(from 210deg, var(--accent), var(--accent-2), var(--accent));
+  box-shadow: 0 0 12px rgba(0,240,255,.7);
+}
+.brand .name { font-family: Orbitron, Inter; font-weight: 800; letter-spacing: .6px; }
+.nav .links a { color: var(--muted); text-decoration: none; margin-left: 14px; }
+.nav .links a:hover { color: var(--text); }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 18px 20px 40px; }
+.hero { text-align: center; padding: 20px 0 10px; }
+.glow { font-size: 42px; margin: 0; text-shadow: 0 0 12px rgba(0,240,255,.55); }
+.tagline { margin: 8px 0 24px; color: var(--muted); }
+
+.levels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(16,22,42,.95), rgba(16,22,42,.8));
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 14px;
+  padding: 18px;
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: "";
+  position: absolute; inset: -1px;
+  border-radius: 14px;
+  background: linear-gradient(120deg, rgba(0,240,255,.22), rgba(255,0,225,.22));
+  filter: blur(16px);
+  z-index: 0;
+}
+.card .content { position: relative; z-index: 1; }
+.card h3 { margin: 0 0 8px; font-family: Orbitron; letter-spacing: .4px; }
+.card .meta { color: var(--muted); font-size: 13px; margin-bottom: 14px; }
+.card .actions { display: flex; justify-content: space-between; align-items: center; }
+
+.btn {
+  appearance: none;
+  border: none; outline: none;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 16px;
+  color: #00141a;
+  background: linear-gradient(90deg, var(--accent), #7af9ff);
+  box-shadow: 0 8px 18px rgba(0,240,255,.25);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  min-width: 132px;
+  text-align: center;
+}
+.btn:hover { filter: brightness(1.05); }
+
+.panel {
+  margin-top: 16px;
+  background: var(--panel);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 160px;
+  background: #0d1426;
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 12px;
+  padding: 12px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.hint { color: var(--muted); font-size: 13px; }
+
+.admin {
+  margin-top: 16px;
+  border: 1px dashed rgba(255,255,255,.18);
+  border-radius: 12px;
+  padding: 12px;
+}
+.admin h4 { margin: 0 0 8px; font-family: Orbitron; }
+.admin .status { color: var(--muted); font-size: 13px; }
+
+.hidden { display: none; }
+
+.particles {
+  position: fixed; inset: 0; z-index: -1;
+  background: radial-gradient(600px 400px at 30% 20%, rgba(0,240,255,.06), transparent 60%),
+              radial-gradient(500px 300px at 70% 80%, rgba(255,0,225,.06), transparent 60%);
+}
+
+/* Textual layout for directions */
+.text-layout { margin-top: 8px; }
+.text-section { margin: 24px 0; }
+.text-heading { font-family: Orbitron; font-size: 22px; letter-spacing: .4px; }
+.text-heading a { color: var(--text); text-decoration: none; }
+.text-heading a:hover { color: var(--accent); }
+.rule { height: 1px; background: linear-gradient(90deg, rgba(255,255,255,.18), rgba(0,240,255,.4)); margin: 8px 0 8px; }
+.text-section .levels-grid { margin-top: 10px; }
+
+/* Level-specific spacing: create vertical gap between anchor and textarea */
+#sandboxPanel a.btn { margin-bottom: 16px; }
+#sandboxPanel .textarea { margin-top: 12px; }
+#remotePanel a.btn { margin-bottom: 16px; }

@@ -1,0 +1,14 @@
+{
+  "directions": [
+    {
+      "id": "prototype-pollution",
+      "name": "原型链污染漏洞",
+      "path": "directions/prototype/index.html"
+    },
+    {
+      "id": "js-reverse",
+      "name": "JS逆向",
+      "path": "directions/reverse/index.html"
+    }
+  ]
+}

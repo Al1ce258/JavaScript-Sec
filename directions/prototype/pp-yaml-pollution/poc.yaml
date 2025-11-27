@@ -1,0 +1,7 @@
+__proto__:
+  process:
+    env:
+      IS_ADMIN: "1"
+  featureGate: true
+theme:
+  accent: "#7af9ff"

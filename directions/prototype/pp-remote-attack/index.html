@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>远程原型污染 · 同进程劫持</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../assets/css/style.css" />
+  </head>
+  <body>
+    <div id="app" class="app-shell">
+      <main class="container">
+        <section class="hero">
+          <h1 class="glow">远程原型污染</h1>
+          <p class="tagline">同进程下的引用劫持与控制流翻转</p>
+        </section>
+
+        <section class="panel" id="remotePanel">
+          <div style="display:flex; gap:12px; align-items:center; justify-content:space-between;">
+            <label style="flex:1; display:flex; align-items:center; gap:8px; color: var(--muted);">
+              远程源：
+              <textarea id="srcInput" class="textarea" style="flex:1;" placeholder="请输入内容"></textarea>
+            </label>
+            <a class="btn" href="../../../index.html">返回首页</a>
+          </div>
+          <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+            <button id="loadRemoteBtn" class="btn">加载远程配置</button>
+            <button id="applyBtn" class="btn" style="background: linear-gradient(90deg, #7af9ff, #00f0ff);">应用配置</button>
+            <button id="resetBtn" class="btn" style="background: linear-gradient(90deg, #ffa4f5, #ff00e1);">重置环境</button>
+          </div>
+        </section>
+
+        <section class="panel" id="statusPanel" style="margin-top:16px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="hint">系统状态</div>
+            <div id="remoteStatus" class="hint">远程：未加载</div>
+          </div>
+          <div style="margin-top:8px; display:flex; gap:16px; flex-wrap:wrap;">
+            <div id="featureStatus" class="hint">featureGate：undefined</div>
+            <div id="adminStatus" class="hint">admin：false</div>
+          </div>
+        </section>
+
+        <section id="adminConsole" class="admin hidden">
+          <h4>系统控制台</h4>
+          <div class="status">访问等级：管理员</div>
+          <div class="hint" style="margin-top:6px;">管理员敏感信息：<span style="color: var(--accent);">FLAG{ADMIN_ONLY_REMOTE}</span></div>
+          <div style="margin-top:8px; display:flex; gap:8px;">
+            <button class="btn">查看系统日志</button>
+            <button class="btn" style="background: linear-gradient(90deg, var(--success), #9cffc0);">切换维护模式</button>
+          </div>
+        </section>
+
+        <section id="secretPanel" class="panel hidden" style="margin-top:16px;">
+          <div class="hint">受保护的内容</div>
+          <div style="margin-top:8px;">CTF Flag：<span style="color: var(--accent)">FLAG{PP_REMOTE_ATTACK_SUCCESS}</span></div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="../../../assets/js/ui.js"></script>
+    <script type="module" src="./app.js"></script>
+  </body>
+  </html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>拒绝服务攻击（原型污染）</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../assets/css/style.css" />
+  </head>
+  <body>
+    <div id="app" class="app-shell">
+      <main class="container">
+        <section class="hero">
+          <h1 class="glow">拒绝服务攻击</h1>
+          <p class="tagline">原型污染 · 属性添加/修改</p>
+        </section>
+
+        <section class="panel" id="injectPanel">
+          <div style="display:flex; gap:12px; align-items:center; justify-content:space-between;">
+            <div></div>
+            <a class="btn" href="../../../index.html">返回首页</a>
+          </div>
+          <textarea id="payloadInput" class="textarea" placeholder='请输入内容'></textarea>
+          <div style="margin-top: 10px; display:flex; gap:10px; flex-wrap:wrap;">
+            <button id="applyBtn" class="btn">注入配置</button>
+            <button id="resetBtn" class="btn" style="background: linear-gradient(90deg, #ffa4f5, #ff00e1);">重置环境</button>
+          </div>
+        </section>
+
+        <section class="panel" id="statusPanel" style="margin-top:16px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="hint">系统状态</div>
+            <div id="jobInfo" class="hint">任务：attempts=默认</div>
+          </div>
+          <div style="margin-top:8px; display:flex; gap:16px; flex-wrap:wrap;">
+            <div id="overloadStatus" class="hint">overload：false</div>
+            <div id="attemptsStatus" class="hint">attempts：默认</div>
+          </div>
+        </section>
+
+        <section class="panel" id="jobPanel" style="margin-top:16px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="hint">任务执行</div>
+            <div></div>
+          </div>
+          <div style="margin-top:8px; display:flex; gap:8px;">
+            <button id="runBtn" class="btn" style="background: linear-gradient(90deg, var(--success), #9cffc0);">运行任务</button>
+          </div>
+          <div id="progress" class="hint" style="margin-top:8px;">进度：0%</div>
+        </section>
+
+        <section id="secretPanel" class="panel hidden" style="margin-top:16px;">
+          <div class="hint">受保护的内容</div>
+          <div style="margin-top:8px;">CTF Flag：<span style="color: var(--accent)">FLAG{PP_DOS_ATTACK_SUCCESS}</span></div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="../../../assets/js/ui.js"></script>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

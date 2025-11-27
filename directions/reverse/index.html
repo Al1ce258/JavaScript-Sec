@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>方向二 · JS逆向</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+  </head>
+  <body>
+    <div id="app" class="app-shell">
+      <main class="container">
+        <section class="hero">
+          <h1 class="glow">方向二 · JS逆向</h1>
+          <p class="tagline">真实页面，禁止提示</p>
+        </section>
+        <section>
+          <div id="levels" class="levels-grid" aria-label="levels"></div>
+        </section>
+        <div class="panel" style="margin-top: 16px; display:flex; justify-content:space-between; align-items:center;">
+          <span class="hint">在此方向下维护多个关卡（动态加载）。</span>
+          <a class="btn" href="../../index.html">返回首页</a>
+        </div>
+      </main>
+    </div>
+
+    <script type="module" src="../../assets/js/ui.js"></script>
+    <script type="module" src="./rev.js"></script>
+  </body>
+  </html>

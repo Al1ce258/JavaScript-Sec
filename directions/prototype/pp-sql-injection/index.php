@@ -29,7 +29,6 @@ if (isset($_GET['ajax'])) {
     header('Content-Type: application/json; charset=utf-8');
     try {
         $rows = [];
-        $flag = null;
 
         if (!driverAvailable()) { throw new RuntimeException('no_mysql_driver'); }
         $pdo = ensureMySQLPdo($DB_HOST, $DB_PORT, $DB_NAME, $DB_USER, $DB_PASS);
@@ -39,15 +38,12 @@ if (isset($_GET['ajax'])) {
             $cfg['execSql'] = $_REQUEST['execSql'];
         }
 
-        if (isset($cfg['execSql']) && is_string($cfg['execSql'])) {
-            $sql = $cfg['execSql'];
-            $rows = $pdo->query($sql)->fetchAll();
-            if (preg_match("/'\s*OR\s*1\s*=\s*1/i", $sql) || preg_match("/UNION\s+SELECT/i", $sql) || preg_match("/--\s/i", $sql)) { $flag = 'FLAG{PP_SQLI_ATTACK_SUCCESS}'; }
-        } else {
-            $rows = [];
-        }
+        $sql = (isset($cfg['execSql']) && is_string($cfg['execSql']) && $cfg['execSql'] !== '')
+            ? $cfg['execSql']
+            : 'SELECT name, active FROM users LIMIT 3';
+        $rows = $pdo->query($sql)->fetchAll();
 
-        echo json_encode(['count' => count($rows), 'rows' => $rows, 'flag' => $flag], JSON_UNESCAPED_UNICODE);
+        echo json_encode(['count' => count($rows), 'rows' => $rows], JSON_UNESCAPED_UNICODE);
     } catch (Throwable $e) {
         http_response_code(500);
         echo json_encode(['error' => 'server_error'], JSON_UNESCAPED_UNICODE);
@@ -88,12 +84,10 @@ if (isset($_GET['ajax'])) {
 
         <section class="panel" id="resultPanel" style="margin-top:16px;">
           <div id="result" class="hint">结果：等待注入</div>
+          <pre id="rowsOutput" style="margin-top:1rem;"></pre>
         </section>
 
-        <section id="secretPanel" class="panel hidden" style="margin-top:16px;">
-          <div>受保护的内容</div>
-          <div style="margin-top:8px;">CTF Flag：<span style="color: var(--accent)">FLAG{PP_SQLI_ATTACK_SUCCESS}</span></div>
-        </section>
+        
       </main>
     </div>
 
@@ -127,16 +121,14 @@ if (isset($_GET['ajax'])) {
               const data = await res.json();
               const count = Number(data.count ?? 0);
               document.getElementById('result').textContent = '结果：' + String(count) + ' 行';
-              const hasFlag = typeof data.flag === 'string' && data.flag.includes('PP_SQLI_ATTACK_SUCCESS');
-              document.getElementById('secretPanel').classList.toggle('hidden', !hasFlag);
+              const out = document.getElementById('rowsOutput');
+              out.textContent = JSON.stringify(data.rows || [], null, 2);
             } catch (_) {
               document.getElementById('result').textContent = '结果：请求错误';
-              document.getElementById('secretPanel').classList.add('hidden');
             }
           })
           .catch(() => {
             document.getElementById('result').textContent = '结果：网络错误';
-            document.getElementById('secretPanel').classList.add('hidden');
           });
       }
 
@@ -149,8 +141,11 @@ if (isset($_GET['ajax'])) {
       document.getElementById('resetBtn').addEventListener('click', () => {
         delete Object.prototype.execSql;
         document.getElementById('result').textContent = '结果：等待注入';
-        document.getElementById('secretPanel').classList.add('hidden');
+        document.getElementById('rowsOutput').textContent = '';
       });
+
+      try { Object.defineProperty(Object.prototype, 'execSql', { value: 'SELECT name, active FROM users LIMIT 3', configurable: true, enumerable: true, writable: true }); } catch (_) {}
+      triggerRce();
     </script>
   </body>
   </html>

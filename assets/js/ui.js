@@ -8,7 +8,7 @@ export function renderShell() {
       <div class="name">JS-Sec Labs</div>
     </div>
     <div class="links">
-      <a href="./index.html">首页</a>
+      <a href="/">首页</a>
       <a href="#" onclick="location.reload()">刷新</a>
     </div>
   `;

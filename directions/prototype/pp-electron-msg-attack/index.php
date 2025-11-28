@@ -91,7 +91,7 @@ if (isset($_GET['ajax'])) {
             <div id="fileStatus" class="hint">文件：5 项</div>
           </div>
           <div style="margin-top:8px; display:flex; gap:10px;">
-            <button id="receiveBtn" class="btn" style="background: linear-gradient(90deg, var(--warning), #ffcf6e);">执行任务（接收指令）</button>
+            <button id="receiveBtn" class="btn">执行任务（接收指令）</button>
           </div>
         </section>
 
